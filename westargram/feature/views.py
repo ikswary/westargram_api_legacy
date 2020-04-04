@@ -1,3 +1,30 @@
-from django.shortcuts import render
+import json
 
-# Create your views here.
+from django.http import JsonResponse
+from django.views import View
+
+from .models import Comments, UserData
+
+
+class CommentView(View):
+    def post(self, request):
+        data = json.loads(request.body)
+
+        Comments(
+            username=data['username'],
+            comment=data['comment']
+        ).save()
+
+        return JsonResponse({'message': 'Comment Upload Success'}, status=200)
+
+
+class LoginView(View):
+    def post(self, request):
+        input = json.loads(request.body)
+        userdatas = UserData.objects.values()
+
+        for userdata in userdatas:
+            if input['userid'] == userdata['userid'] and input['password'] == userdata['password']:
+                return JsonResponse({'message': ''}, status=200)
+
+        return JsonResponse({'message': 'INVALID_USER'}, status=401)
