@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+
+class Comments(models.Model):
+    username = models.CharField(max_length=50)
+    comment = models.CharField(max_length=300)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
