@@ -44,6 +44,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+.pyc
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -208,3 +209,5 @@ fabric.properties
 .idea/**/markdown-navigator/
 
 # End of https://www.gitignore.io/api/django,pycharm
+
+westargram/.idea/workspace.xml

@@ -6,3 +6,8 @@ class Comments(models.Model):
     comment = models.CharField(max_length=300)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+class UserData(models.Model):
+    userid = models.CharField(max_length=20)
+    comment = models.CharField(max_length=20)
