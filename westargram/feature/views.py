@@ -17,13 +17,13 @@ class CommentView(View):
 
         return JsonResponse({'message': 'Comment Upload Success'}, status=200)
 
-    def get(self, target):
+    def get(self, request, target):
         result = list()
         comments = Comments.objects.values()
         for comment in comments:
-            if comment['id'] == target:
+            if comment['username'] == target:
                 result.append(comment['comment'])
-
+        print(result)
         return JsonResponse({'messages': result}, status=200)
 
 
