@@ -17,6 +17,15 @@ class CommentView(View):
 
         return JsonResponse({'message': 'Comment Upload Success'}, status=200)
 
+    def get(self, target):
+        result = list()
+        comments = Comments.objects.values()
+        for comment in comments:
+            if comment['id'] == target:
+                result.append(comment['comment'])
+
+        return JsonResponse({'messages': result}, status=200)
+
 
 class LoginView(View):
     def post(self, request):
