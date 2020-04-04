@@ -23,7 +23,6 @@ class CommentView(View):
         for comment in comments:
             if comment['username'] == target:
                 result.append(comment['comment'])
-        print(result)
         return JsonResponse({'messages': result}, status=200)
 
 
